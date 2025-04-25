@@ -1,6 +1,7 @@
 package pages;
 
 import context.TestContext;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -32,6 +33,7 @@ public class AllPostsPage extends BasePage{
     @FindBy(css = "#posts-search-results-heading")
     private WebElement searchResultHeading;
 
+    @Step("Получаем посты")
     public List<PostComponent> getPosts() {
         return postContainers.stream().map(element -> new PostComponent(context, element)).toList();
     }
@@ -40,10 +42,12 @@ public class AllPostsPage extends BasePage{
         return getPosts().stream().filter(condition).findFirst().orElseThrow();
     }
 
+    @Step("Получаем хедер")
     public String getHeaderText(){
         return allPostsHeader.getText();
     }
 
+    @Step("Поиск {0}")
     public AllPostsPage search(String text){
         searchInput.sendKeys(text);
         searchButton.click();
