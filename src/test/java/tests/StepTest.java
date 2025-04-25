@@ -4,6 +4,8 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class StepTest {
 
     private static final String GLOBAL_PARAMETER = "global value";
@@ -11,6 +13,7 @@ public class StepTest {
     @Test
     public void annotatedStepTest() {
         annotatedStep("local value");
+        throw new IllegalStateException("Что-то пошло не так");
     }
 
     @Test
@@ -19,6 +22,7 @@ public class StepTest {
         Allure.step(String.format("Parent lambda step with parameter [%s]", localParameter), (step) -> {
             step.parameter("parameter", localParameter);
             Allure.step(String.format("Nested lambda step with global parameter [%s]", GLOBAL_PARAMETER));
+            fail();
         });
     }
 

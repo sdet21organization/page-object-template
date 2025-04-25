@@ -32,11 +32,17 @@ public class ParamTest {
     @CsvFileSource(resources = "/data.csv")
     void testWithCsvFileSource(String name, int age) {
 
+        if (name.equals("brian")) {
+            throw new IllegalStateException("Что-то пошло не так");
+        }
+
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
 
         Allure.addAttachment("Name", name);
         Allure.addAttachment("Age", String.valueOf(age));
+
+
     }
 
 }

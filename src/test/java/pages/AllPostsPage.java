@@ -49,7 +49,7 @@ public class AllPostsPage extends BasePage{
 
     @Step("Поиск {0}")
     public AllPostsPage search(String text){
-        searchInput.sendKeys(text);
+        // searchInput.sendKeys(text);
         searchButton.click();
         context.wait.until(ExpectedConditions.visibilityOf(searchResultHeading));
         return this;

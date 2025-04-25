@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.*;
@@ -71,6 +72,7 @@ public class DevExTests extends BaseTest{
 
     @Test
     // @DisplayName("Тест фильтра постов")
+    @Disabled
     public void postsFilterTest(){
 
         context.driver.get(ConfigurationReader.get("url") + "login");
